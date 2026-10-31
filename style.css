@@ -1,0 +1,417 @@
+
+/* CONFIGURAÇÕES GERAIS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+    background: #020014;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+/* FUNDO ANIMADO */
+#space {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+/* ECRÃ INICIAL */
+#intro {
+    position: fixed;
+    inset: 0;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    background: #000;
+    text-align: center;
+    padding: 20px;
+}
+
+#ready {
+    color: #fff;
+    font-size: clamp(28px, 6vw, 55px);
+    text-shadow: 0 0 15px #9b5cff, 0 0 30px #397bff;
+}
+
+/* BOTÃO */
+#startButton {
+    display: none;
+    padding: 15px 35px;
+    border: 2px solid #a66bff;
+    border-radius: 40px;
+    background: linear-gradient(90deg, #452080, #174c9b);
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 20px #844dff;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+#startButton:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 35px #a66bff;
+}
+
+/* CAIXA MISTERIOSA */
+#mysteryBox {
+    position: fixed;
+    inset: 0;
+    z-index: 4;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.box-container {
+    position: relative;
+    width: 150px;
+    height: 120px;
+    margin-top: 20px;
+    z-index: 2;
+}
+
+.box-body {
+    position: absolute;
+    bottom: 0;
+    width: 150px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #b68aff;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #30105d, #111d62);
+    box-shadow: 0 0 25px #824cff;
+}
+
+.box-body span {
+    font-size: 40px;
+    color: #fff;
+    text-shadow: 0 0 15px #a66bff;
+}
+
+.box-lid {
+    position: absolute;
+    top: 10px;
+    left: -7px;
+    width: 164px;
+    height: 28px;
+    border: 3px solid #c5a0ff;
+    border-radius: 7px;
+    background: linear-gradient(90deg, #54258d, #263a91);
+    transform-origin: left bottom;
+    z-index: 3;
+}
+
+.box-light {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background: #8c43ff;
+    filter: blur(90px);
+    opacity: 0.5;
+}
+
+#mysteryBox.shake .box-container {
+    animation: shake 0.13s infinite;
+}
+
+@keyframes shake {
+    0% { transform: translate(0, 0) rotate(0); }
+    25% { transform: translate(-5px, 2px) rotate(-3deg); }
+    50% { transform: translate(5px, -2px) rotate(3deg); }
+    75% { transform: translate(-4px, -2px) rotate(-2deg); }
+    100% { transform: translate(0, 0) rotate(0); }
+}
+
+#mysteryBox.open .box-lid {
+    animation: openLid 0.8s forwards;
+}
+
+@keyframes openLid {
+    to {
+        transform: translateY(-65px) rotate(-25deg);
+    }
+}
+
+/* UNIVERSO */
+#universe {
+    position: fixed;
+    inset: 0;
+    z-index: 2;
+    display: none;
+    overflow: hidden;
+}
+
+.universe-title {
+    position: absolute;
+    top: 7%;
+    width: 100%;
+    text-align: center;
+    font-size: clamp(23px, 5vw, 42px);
+    color: #d9c1ff;
+    text-shadow: 0 0 15px #8d4dff;
+}
+
+/* PLANETAS */
+#planets {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.planet {
+    position: absolute;
+    border-radius: 50%;
+    box-shadow: inset -12px -10px 20px rgba(0,0,0,0.5),
+                0 0 25px rgba(150,100,255,0.5);
+}
+
+.planet-one {
+    width: 75px;
+    height: 75px;
+    left: 15%;
+    top: 25%;
+    background: linear-gradient(135deg, #a96cff, #372080);
+}
+
+.planet-two {
+    width: 110px;
+    height: 110px;
+    right: 13%;
+    top: 40%;
+    background: linear-gradient(135deg, #49d5ff, #17458b);
+}
+
+.planet-three {
+    width: 55px;
+    height: 55px;
+    left: 60%;
+    bottom: 12%;
+    background: linear-gradient(135deg, #ff8bd7, #7b267d);
+}
+
+/* PERSONAGEM ORIGINAL DE AVENTURA */
+#astronaut {
+    position: absolute;
+    left: 10%;
+    top: 60%;
+    width: 90px;
+    height: 130px;
+    transform: translate(-50%, -50%);
+    transition: left 2s ease, top 2s ease;
+    z-index: 3;
+    animation: floatCharacter 3s ease-in-out infinite;
+}
+
+@keyframes floatCharacter {
+    0%, 100% { margin-top: 0; }
+    50% { margin-top: -15px; }
+}
+
+.pirate-character {
+    position: relative;
+    width: 90px;
+    height: 125px;
+}
+
+/* CHAPÉU */
+.hat {
+    position: absolute;
+    top: 0;
+    left: 15px;
+    width: 65px;
+    height: 30px;
+    z-index: 5;
+}
+
+.hat-top {
+    position: absolute;
+    top: 0;
+    left: 12px;
+    width: 42px;
+    height: 24px;
+    border-radius: 50% 50% 15% 15%;
+    background: #e9b84f;
+    border: 2px solid #8a5420;
+}
+
+.hat-brim {
+    position: absolute;
+    bottom: 0;
+    width: 65px;
+    height: 10px;
+    border-radius: 50%;
+    background: #d69b35;
+    border: 2px solid #8a5420;
+}
+
+/* CABEÇA */
+.character-head {
+    position: absolute;
+    top: 25px;
+    left: 23px;
+    width: 44px;
+    height: 42px;
+}
+
+.character-hair {
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+    background: #382016;
+}
+
+.character-face {
+    position: absolute;
+    inset: 5px 2px 0;
+    border-radius: 45%;
+    background: #f0bd91;
+}
+
+.eye {
+    position: absolute;
+    top: 13px;
+    width: 4px;
+    height: 5px;
+    border-radius: 50%;
+    background: #171020;
+}
+
+.left-eye {
+    left: 10px;
+}
+
+.right-eye {
+    right: 10px;
+}
+
+.smile {
+    position: absolute;
+    left: 15px;
+    bottom: 8px;
+    width: 12px;
+    height: 6px;
+    border-bottom: 2px solid #9b3545;
+    border-radius: 50%;
+}
+
+/* CORPO */
+.character-body {
+    position: absolute;
+    top: 66px;
+    left: 23px;
+    width: 44px;
+    height: 38px;
+    border-radius: 12px 12px 8px 8px;
+    background: #c83243;
+    border: 2px solid #7f1828;
+}
+
+.character-arm {
+    position: absolute;
+    top: 70px;
+    width: 13px;
+    height: 32px;
+    border-radius: 10px;
+    background: #f0bd91;
+}
+
+.left-arm {
+    left: 12px;
+    transform: rotate(20deg);
+}
+
+.right-arm {
+    right: 12px;
+    transform: rotate(-20deg);
+}
+
+.character-leg {
+    position: absolute;
+    top: 99px;
+    width: 15px;
+    height: 25px;
+    border-radius: 5px;
+    background: #293c81;
+}
+
+.left-leg {
+    left: 25px;
+}
+
+.right-leg {
+    right: 25px;
+}
+
+/* MENSAGENS */
+#message {
+    position: absolute;
+    left: 50%;
+    bottom: 8%;
+    transform: translateX(-50%);
+    width: min(85%, 750px);
+    min-height: 65px;
+    padding: 18px;
+    border: 1px solid rgba(180,130,255,0.7);
+    border-radius: 15px;
+    background: rgba(12, 5, 40, 0.85);
+    color: white;
+    text-align: center;
+    font-size: clamp(16px, 3vw, 23px);
+    line-height: 1.5;
+    box-shadow: 0 0 20px rgba(130,70,255,0.4);
+    z-index: 5;
+}
+
+/* CORAÇÃO FINAL */
+.final-heart {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: clamp(65px, 15vw, 130px);
+    animation: heartBeat 1s infinite;
+    filter: drop-shadow(0 0 25px #ff3b8d);
+}
+
+@keyframes heartBeat {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-50%, -50%) scale(1.2); }
+}
+
+/* ECRÃS PEQUENOS */
+@media (max-width: 600px) {
+    .planet-one {
+        left: 5%;
+        top: 20%;
+    }
+
+    .planet-two {
+        right: 3%;
+        top: 35%;
+    }
+
+    #astronaut {
+        transform: translate(-50%, -50%) scale(0.85);
+    }
+
+    #message {
+        bottom: 5%;
+        padding: 14px;
+    }
+}

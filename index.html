@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmic Journey ❤️</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- CANVAS DO ESPAÇO -->
+    <canvas id="space"></canvas>
+
+    <!-- ECRÃ INICIAL -->
+    <section id="intro">
+
+        <h1 id="ready"></h1>
+
+        <button
+            id="startButton"
+            onclick="startJourney()"
+            style="display: none;"
+        >
+            Start the Journey ✨
+        </button>
+
+    </section>
+
+    <!-- CAIXA MISTERIOSA -->
+    <section id="mysteryBox" style="display: none;">
+
+        <div class="box-light"></div>
+
+        <div class="box-container">
+
+            <div class="box-lid"></div>
+
+            <div class="box-body">
+                <span>?</span>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- UNIVERSO -->
+    <main id="universe" style="display: none;">
+
+        <h1 class="universe-title">
+            Our Little Universe
+        </h1>
+
+        <!-- PERSONAGEM ORIGINAL DE AVENTURA -->
+        <div id="astronaut">
+
+            <div class="pirate-character">
+
+                <div class="hat">
+                    <div class="hat-top"></div>
+                    <div class="hat-brim"></div>
+                </div>
+
+                <div class="character-head">
+                    <div class="character-hair"></div>
+
+                    <div class="character-face">
+                        <span class="eye left-eye"></span>
+                        <span class="eye right-eye"></span>
+                        <span class="smile"></span>
+                    </div>
+                </div>
+
+                <div class="character-body"></div>
+
+                <div class="character-arm left-arm"></div>
+                <div class="character-arm right-arm"></div>
+
+                <div class="character-leg left-leg"></div>
+                <div class="character-leg right-leg"></div>
+
+            </div>
+
+        </div>
+
+        <!-- PLANETAS -->
+        <div id="planets">
+
+            <div class="planet planet-one"></div>
+            <div class="planet planet-two"></div>
+            <div class="planet planet-three"></div>
+
+        </div>
+
+        <!-- MENSAGENS -->
+        <div id="message"></div>
+
+    </main>
+
+    <!-- JAVASCRIPT -->
+    <script src="script.js"></script>
+
+</body>
+</html>
